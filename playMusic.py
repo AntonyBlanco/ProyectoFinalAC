@@ -59,29 +59,16 @@ nota = None
 celesteBajo = np.array([75, 185, 88], np.uint8)
 celesteAlto = np.array([112, 255, 255], np.uint8)
 
-# Colores para pintar
+# Colores a utilizar
 colorCeleste = (255,113,82)
 colorAmarillo = (89,222,255)
-colorBlanco = (0,0,0)
 colorRosa = (128,0,255)
 colorVerde = (0,255,36)
-colorLimpiarPantalla = (29,112,246) # Solo se usará para el cuadro superior de 'Limpiar Pantalla'
+colorLimpiarPantalla = (29,112,246)
 
-# Grosor de línea recuadros superior izquierda (color a dibujar)
-grosorCeleste = 6
-grosorAmarillo = 2
-grosorRosa = 2
-grosorVerde = 2
+color = colorRosa  # Color de puntero
+grosor = 3 # Grosor del marcador del puntero
 
-# Grosor de línea recuadros superior derecha (grosor del marcador para dibujar)
-grosorPeque = 6
-grosorMedio = 1
-grosorGrande = 1
-
-#--------------------- Variables para el marcador / lápiz virtual -------------------------
-color = colorRosa  # Color de entrada, y variable que asignará el color del marcador
-grosor = 3 # Grosor que tendrá el marcador
-#------------------------------------------------------------------------------------------
 
 x1 = None
 y1 = None
@@ -122,7 +109,6 @@ def reFillSquarePositions():
                 if y > yBottom: y += 2*co
         else:
             y = random.randint(0, 280)
-        #if y >= 280 and i!= 0: print({"i": i, "co": co, "yBottom": yBottom, "yTop": yTop, "y": y, "x": x})
         rndPositions.append((x, y))
 # Calcula a modo de cuadrado si un pointCoords está dentro del circulo
 def coordsInCircle(circleCoords, radius, pointCoords):
@@ -132,7 +118,6 @@ def coordsInCircle(circleCoords, radius, pointCoords):
         circleCoords[1] + radius > pointCoords[1] and\
         circleCoords[1] - radius < pointCoords[1]
 reFillSquarePositions()
-#print(rndPositions)
 indexRndPosition = 0
 
 while True:
@@ -193,9 +178,9 @@ while True:
         cv2.putText(frame,"Darth Vader Theme",(40,80),4,0.8,colorVerde,2,cv2.LINE_AA)
         cv2.putText(frame,"Darth Vader Theme",(43,83),4,0.8,colorCeleste,2,cv2.LINE_AA)
 
-        # Nota
-        cv2.circle(frame,(75+inc_x,75+inc_y),25,colorRosa,grosorAmarillo)
-        #cv2.rectangle(frame,(50+inc_x,50+inc_y),(100+inc_x,100+inc_y),colorRosa,grosorAmarillo)
+        # Dibujo de la nota en pantalla
+        cv2.circle(frame,(75+inc_x,75+inc_y),25,colorRosa,2)
+        
         for c in cnts:
             area = cv2.contourArea(c)
             if area > 1000:
@@ -236,8 +221,6 @@ while True:
                 y1 = y2
             else:
                 x1, y1 = None, None
-        
-
 
     imAuxGray = cv2.cvtColor(imAux,cv2.COLOR_BGR2GRAY)
     _, th = cv2.threshold(imAuxGray,10,255,cv2.THRESH_BINARY)
@@ -245,8 +228,7 @@ while True:
     frame = cv2.bitwise_and(frame,frame,mask=thInv)
     frame = cv2.add(frame,imAux)
 
-    #cv2.imshow('maskCeleste', maskCeleste)
-    cv2.imshow('frame', frame)
+    cv2.imshow('Game', frame)
 
     k = cv2.waitKey(1)
     if k == 27:
