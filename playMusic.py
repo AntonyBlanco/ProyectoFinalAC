@@ -179,7 +179,7 @@ while True:
         cv2.putText(frame,"Darth Vader Theme",(43,83),4,0.8,colorCeleste,2,cv2.LINE_AA)
 
         # Dibujo de la nota en pantalla
-        cv2.circle(frame,(75+inc_x,75+inc_y),25,colorRosa,2)
+        cv2.circle(frame,(75+inc_x,125+inc_y),25,colorRosa,2)
         
         for c in cnts:
             area = cv2.contourArea(c)
@@ -187,7 +187,7 @@ while True:
                 x,y2,w,h = cv2.boundingRect(c)
                 x2 = x + w//2
                 if x1 is not None:
-                    if coordsInCircle((75+inc_x, 75+inc_y), 25, (x2, y2)):
+                    if coordsInCircle((75+inc_x, 125+inc_y), 25, (x2, y2)):
                         if playSound:
                             nota = Note()
                             nota.start()
