@@ -1,8 +1,8 @@
 # Proyecto Final
 ### Curso: Arquitectura de Computadoras
 ## Integrantes:
- - Blanco Trujillo Antony Jacob
- - Mayta Nolasco Oliver Alessandro
+ - Blanco Trujillo, Antony Jacob
+ - Mayta Nolasco, Oliver Alessandro
 
 ## Instalación de Requerimientos
 Para el presente proyecto se utilizó Python 3.8.10 el cual se considera la versión estable para instalar Numpy, una dependencia de OpenCV, sin embargo es posible que versiones más recientes de python admitan la instalación de OpenCV sin ningún problema.
