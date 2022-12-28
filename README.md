@@ -8,7 +8,11 @@
 Para el presente proyecto se utilizó Python 3.8.10 el cual se considera la versión estable para instalar Numpy, una dependencia de OpenCV, sin embargo es posible que versiones más recientes de python admitan la instalación de OpenCV sin ningún problema.
 
 Las versiones recomendadas y estables usadas en el proyecto se encuentran en el archivo "requirements.txt".
-
+## Requerimientos
+- imutils==0.5.4
+- numpy==1.23.5
+- opencv-contrib-python==4.6.0.66
+- sounddevice==0.4.5
 ## Interfaz
 ### Principal:
 Al correr el programa  lo primero que veremos será esta interfaz la cual nos dará a elegir entre 2 opciones:<br>
